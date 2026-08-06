@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Portfolio</title>
+  <meta name="description" content="Professional IT Portfolio showcasing projects, certifications, and skills.">
+  
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="Universal/assets/css/main.css?v=29">
+  
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- GSAP for Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js"></script>
+  
+  <!-- Three.js for 3D Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/environments/RoomEnvironment.js"></script>
+</head>
+<body>
+
+  <!-- 3D Canvas Background -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Global Navigation -->
+  <nav class="global-nav">
+    <div class="nav-left">
+      <a href="#projects" class="nav-link">PROJECTS & CERTS</a>
+    </div>
+    <div class="nav-center">
+      <a href="#home" class="nav-name">ANGAMANA BINDIZA</a>
+    </div>
+    <div class="nav-right">
+      <a href="#contact" class="nav-link">CONTACT</a>
+    </div>
+  </nav>
+
+  <!-- Main Content Flow (Scroll Snap Container) -->
+  <main class="scroll-container">
+    
+    <!-- Hero Section -->
+    <section id="home" class="snap-section hero-section">
+      <div class="container hero-content text-center">
+        <h1 class="reveal" style="font-size: clamp(2.5rem, 10vw, 12rem); margin-bottom: 2rem; color: #fff; mix-blend-mode: normal;">
+            CLOUD<br>ARCHITECT
+          </h1>
+        <p class="reveal" style="max-width: 600px; margin: 0 auto;">
+          Building robust infrastructure, seamless deployments, and scalable solutions. Scroll down to enter the core.
+        </p>
+        <div class="scroll-indicator reveal">
+          <span>Scroll</span>
+          <div class="line"></div>
+        </div>
+      </div>
+    </section>
+
+    
+      <!-- Project 1 -->
+      
+      <!-- About Section -->
+      <section id="about" class="snap-section about-section" style="display: flex; align-items: center; justify-content: center;">
+        <div class="container about-content">
+          <div class="glass-panel text-left reveal" style="max-width: 900px; margin: 0 auto; padding: 4rem; border-radius: 24px; background: rgba(20,20,20,0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 30px 60px rgba(0,0,0,0.5);">
+            <h2 class="perfect-invert" style="font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 1.5rem; letter-spacing: -2px; line-height: 1;">SYSTEM ARCHITECT</h2>
+            <h3 class="text-gradient" style="font-size: 1.5rem; margin-bottom: 2rem; display: inline-block;">Cloud Architect | Azure & AWS</h3>
+            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem;">
+              As a Cloud Architect, I engineer robust, scalable, and secure cloud infrastructures. While I specialize deeply in <strong>Azure</strong>, my expertise extends solidly into <strong>AWS</strong>, allowing me to design versatile, multi-cloud enterprise solutions.
+            </p>
+            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem;">
+              My foundational skills span across <strong>Software Development, Data Engineering, and Cybersecurity</strong>. This cross-disciplinary background enables a holistic approach to system architecture—from conceptualizing seamless CI/CD deployments to fortifying data privacy and governance.
+            </p>
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+              <p style="font-size: 1rem; color: #888; font-style: italic; line-height: 1.6;">
+                * Comprehensive process documents and architectural evidence for my Cloud, Electronic Health Archives (EHA), and Privacy-Enhancing Technologies (PET) projects can be viewed directly on my <a href="https://www.linkedin.com/in/angamana-bindiza-992194269/" target="_blank" style="color: #fff; text-decoration: underline;">LinkedIn profile</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="snap-section project-section" data-project-id="1">
+        <div class="container project-content">
+          <div class="project-info-panel reveal glass-panel">
+            <span style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px;">01 / Project</span>
+            <h2 class="invert-target" style="font-size: clamp(2.5rem, 5vw, 5rem); margin: 1rem 0;">Leano Energy <span class="text-gradient">Website</span></h2>
+            <p class="invert-target" style="margin-bottom: 2rem;">A fully responsive, multi-page web application focused on high performance, modern UI/UX principles, and robust security.</p>
+            
+            <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+              <span class="tag">HTML5/CSS3</span>
+              <span class="tag">Vanilla JS</span>
+            </div>
+  
+            <button class="btn view-project-btn">View Source</button>
+          </div>
+          
+          <div class="project-visual reveal view-project-btn">
+            <div class="preview-box">
+               <video class="project-preview-video" src="Universal/assets/Videos/Project 1 Video.mp4" autoplay loop muted playsinline></video>
+               <div class="video-overlay-play"><i class="fas fa-play"></i></div>
+            </div>
+          </div>
+          
+          <!-- Hidden details for modal -->
+          <div class="project-hidden-details" style="display: none;">
+            <a href="https://angamana.github.io/Leano-Energy-Website/" target="_blank" class="btn" style="margin-bottom: 2rem;">Visit Live Site</a>
+            
+            <h3>Overview</h3>
+            <p>This document outlines the end-to-end build process and the core technical skills utilized in developing the Leano Energy static website. The project involved creating a fully responsive, multi-page web application focused on high performance, modern UI/UX principles, and robust security.</p>
+            
+            <h3>Technical Skills Utilized</h3>
+            <ul>
+              <li><strong>HTML5:</strong> Structured, semantic markup for 30+ interconnected pages ensuring accessibility and strong SEO foundations.</li>
+              <li><strong>CSS3 & Advanced Styling:</strong> Responsive Web Design (Mobile-First approach), Flexbox and CSS Grid, CSS Variables, and CSS Micro-animations.</li>
+              <li><strong>JavaScript (Vanilla JS):</strong> DOM manipulation, custom state management for dynamic UI components, and security script implementation.</li>
+              <li><strong>Architecture:</strong> Designed a highly scalable, serverless-ready component structure utilizing robust decoupling principles for optimal asset delivery.</li>
+              <li><strong>Infrastructure & Deployment:</strong> Architected static environment configuration mapping with CI/CD integration using Git, minimizing downtime during iterative deployments.</li>
+            </ul>
+
+            <h3>The Build Process</h3>
+            <ul>
+              <li><strong>Phase 1: Planning and Architecture:</strong> Requirements Gathering, Information Architecture, and UI/UX Blueprinting.</li>
+              <li><strong>Phase 2: Core Development:</strong> Structural HTML Foundation, Global Styling System, and Responsive Layouts.</li>
+              <li><strong>Phase 3: Interactive Features & Custom Logic:</strong> Dynamic Widgets (3-stage peek/expand system), Navigation and Scroll Behaviors, and python automation scripts for relative links.</li>
+              <li><strong>Phase 4: Security & Optimization:</strong> Content Protection (anti-right-click), SEO Implementation (JSON-LD, OG tags), and Asset Optimization.</li>
+              <li><strong>Phase 5: Testing and Deployment:</strong> Cross-Browser Testing, Git Versioning, and Production Push to GitHub.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Project 2 -->
+      <section class="snap-section project-section" data-project-id="2">
+        <div class="container project-content alternate">
+          <div class="project-info-panel reveal glass-panel">
+            <span style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px;">02 / Project</span>
+            <h2 class="invert-target" style="font-size: clamp(2.5rem, 5vw, 5rem); margin: 1rem 0;">Nexyra <span class="text-gradient">Tender App</span></h2>
+            <p class="invert-target" style="margin-bottom: 2rem;">A lightning-fast React application powered by Vite and TypeScript for tender processing and document generation.</p>
+            
+            <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+              <span class="tag">React & TS</span>
+              <span class="tag">Tailwind CSS</span>
+            </div>
+  
+            <button class="btn view-project-btn">View Source</button>
+          </div>
+          
+          <div class="project-visual reveal view-project-btn">
+            <div class="preview-box">
+               <video class="project-preview-video" src="Universal/assets/Videos/Project 2 video.mp4" autoplay loop muted playsinline></video>
+               <div class="video-overlay-play"><i class="fas fa-play"></i></div>
+            </div>
+          </div>
+
+          <!-- Hidden details for modal -->
+          <div class="project-hidden-details" style="display: none;">
+            <a href="https://angamana.github.io/Nexyra-Tender-App/#/login" target="_blank" class="btn" style="margin-bottom: 2rem;">Visit Live App</a>
+
+            <h3>Technical Skills Required</h3>
+            <ul>
+              <li><strong>Frontend Engineering:</strong> React & TypeScript, React Router DOM v6.</li>
+              <li><strong>Software Architecture:</strong> Domain-Driven Directory Structure, Tailwind CSS v4, modern glassmorphism.</li>
+              <li><strong>Data Persistence:</strong> Browser Storage APIs (localStorage), IndexedDB / Localforage for large document storage.</li>
+              <li><strong>Document Processing:</strong> DOCX Parsing (mammoth.js), Python Automation Scripts.</li>
+              <li><strong>DevOps & CI/CD:</strong> Git, Vite Build Engine, GitHub Actions & Cloud Hosting.</li>
+            </ul>
+
+            <h3>The Build Process</h3>
+            <ul>
+              <li><strong>Phase 1: Project Setup:</strong> Framework Initialization (Vite + TS), Styling System Integration (Tailwind v4).</li>
+              <li><strong>Phase 2: Universal Modular Web Architecture:</strong> Physical File Isolation (domain-driven modules), Automated Import Repairs.</li>
+              <li><strong>Phase 3: State Management & Client-Side Authentication:</strong> State Persistence via React Contexts, Authentication Flow (Password/Email Sign In).</li>
+              <li><strong>Phase 4: RFP Processing & Document Generation:</strong> Memory Bank & Compliance Engine, DOCX Document Parsing.</li>
+              <li><strong>Phase 5: CI/CD Pipeline & Deployment:</strong> Client-Side Routing (HashRouter), Build Optimization, Automated GitHub Actions Deployment.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project 3 -->
+      <section class="snap-section project-section" data-project-id="3">
+        <div class="container project-content">
+          <div class="project-info-panel reveal glass-panel">
+            <span style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px;">03 / Project</span>
+            <h2 class="invert-target" style="font-size: clamp(2.5rem, 5vw, 5rem); margin: 1rem 0;">Nexyra Tech <span class="text-gradient">Website</span></h2>
+            <p class="invert-target" style="margin-bottom: 2rem;">Corporate website engineering featuring interactive 3D graphics, data privacy compliance, and strict SEO structuring.</p>
+            
+            <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+              <span class="tag">Three.js</span>
+              <span class="tag">GSAP</span>
+            </div>
+  
+            <button class="btn view-project-btn">View Source</button>
+          </div>
+          
+          <div class="project-visual reveal view-project-btn">
+            <div class="preview-box">
+               <video class="project-preview-video" src="Universal/assets/Videos/Project 3 video.mp4" autoplay loop muted playsinline></video>
+               <div class="video-overlay-play"><i class="fas fa-play"></i></div>
+            </div>
+          </div>
+
+          <!-- Hidden details for modal -->
+          <div class="project-hidden-details" style="display: none;">
+            <a href="https://angamana.github.io/Nexyra-Tech-Website/Index/website/Index.html" target="_blank" class="btn" style="margin-bottom: 2rem;">Visit Live Site</a>
+
+            <h3>Core Technical Skills Required</h3>
+            <ul>
+              <li><strong>Front-End Engineering:</strong> HTML5, CSS3, ES6+ JavaScript, DOM Manipulation, CSS Grid/Flexbox.</li>
+              <li><strong>3D Graphics & Motion Design:</strong> Three.js (WebGL), GSAP, ScrollTrigger, Lenis Smooth Scroll.</li>
+              <li><strong>Data Privacy & Compliance:</strong> Client-side privacy controls, conditional script injection, consent state persistence.</li>
+              <li><strong>Technical SEO:</strong> Open Graph Protocol, Twitter Cards, Semantic Structuring, XML Sitemaps.</li>
+              <li><strong>Node.js & DevOps:</strong> Regex parsing, batch file transformation, Git branching, CDN cache invalidation.</li>
+            </ul>
+
+            <h3>End-to-End Build Process</h3>
+            <ul>
+              <li><strong>Phase 1: Architecture & UI:</strong> Semantic HTML5 blueprint, Custom CSS Styling System (Variables), Interactive 3D Graphics & Motion (WebGL/Three.js).</li>
+              <li><strong>Phase 2: Privacy Infrastructure:</strong> Standalone Consent Engine, Deferred Script Execution, Mobile-Adaptive Design.</li>
+              <li><strong>Phase 3: Technical SEO:</strong> Metadata Engineering, Search Engine Directives (robots.txt, sitemap.xml).</li>
+              <li><strong>Phase 4: Security & UX Refinement:</strong> Content Protection (right-click disabling), Cache-Busting Asset Versioning, Linux Path Normalization.</li>
+              <li><strong>Phase 5: Automated Deployment:</strong> Version Control Integration, Automated Root Routing, Continuous Deployment to GitHub Pages.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+    <section id="certs" class="snap-section cert-section">
+      <div class="container cert-container">
+        <div class="text-center">
+          <h2 class="reveal perfect-invert" style="font-size: clamp(3rem, 6vw, 6rem); margin-bottom: 2rem;">CREDENTIALS</h2>
+        </div>
+        
+        <div class="cert-viewport reveal">
+          <div class="cert-track">
+            <div class="cert-card-wrapper" style="--i: 0;">
+              <div class="cert-card" data-full-img="Universal/assets/Certificates/CDMP Associates Image.png" data-title="CDMP Certification - Associate" data-org="DAMA International" data-desc="Obtained by passing the Data Management Fundamentals exam. Covers data governance, data architecture, data modeling, data quality, and master data management principles outlined in the DMBOK." data-pdf="Universal/assets/Certificates/CDMP Associate Certificate.pdf">
+                <div class="cert-card-inner">
+                  <div class="cert-front">
+                    <div class="cert-image-preview" style="background-image: url('Universal/assets/Certificates/CDMP Associates Image.png'); background-size: contain; background-repeat: no-repeat; background-position: center; flex: 1; border-bottom: 1px solid var(--glass-border);"></div>
+                    <div class="cert-text-preview" style="padding: 1.5rem; text-align: left; background: rgba(0,0,0,0.5);">
+                      <h3 style="margin-bottom: 0.5rem; font-size: 1.2rem;">CDMP Certification - Associate</h3>
+                      <p style="color: var(--text-secondary);">DAMA International</p>
+                      <p class="cert-coming-soon" style="color: var(--accent); font-size: 0.8rem; margin-top: 0.5rem;"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cert-card-wrapper" style="--i: 1;">
+              <div class="cert-card" data-full-img="Universal/assets/Certificates/CDMP Practitioner Image.png" data-title="CDMP Certification - Practitioner" data-org="DAMA International (Data Governance, Reference & Master Data)" data-desc="Achieved by passing the Fundamentals exam plus two specialist exams (Data Governance and Reference & Master Data) with a score of 70%+. Demonstrates advanced expertise in establishing data governance frameworks and mastering reference data strategies." data-pdf="Universal/assets/Certificates/CDMP Practitioner Certificate.pdf">
+                <div class="cert-card-inner">
+                  <div class="cert-front">
+                    <div class="cert-image-preview" style="background-image: url('Universal/assets/Certificates/CDMP Practitioner Image.png'); background-size: contain; background-repeat: no-repeat; background-position: center; flex: 1; border-bottom: 1px solid var(--glass-border);"></div>
+                    <div class="cert-text-preview" style="padding: 1.5rem; text-align: left; background: rgba(0,0,0,0.5);">
+                      <h3 style="margin-bottom: 0.5rem; font-size: 1.2rem;">CDMP Certification - Practitioner</h3>
+                      <p style="color: var(--text-secondary);">DAMA International (Data Governance, Reference & Master Data)</p>
+                      <p class="cert-coming-soon" style="color: var(--accent); font-size: 0.8rem; margin-top: 0.5rem;"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cert-card-wrapper" style="--i: 2;">
+              <div class="cert-card" data-full-img="Universal/assets/Certificates/Google Cybersecurity Certificate Image.png" data-title="Google Cybersecurity Professional" data-org="Google" data-desc="Completed through an intensive 8-course program by Google. Focuses on network security, Linux command line, Python for security automation, SIEM tools (Splunk, Chronicle), and incident response." data-pdf="Universal/assets/Certificates/Google Cybersecurity Certificate.pdf">
+                <div class="cert-card-inner">
+                  <div class="cert-front">
+                    <div class="cert-image-preview" style="background-image: url('Universal/assets/Certificates/Google Cybersecurity Certificate Image.png'); background-size: contain; background-repeat: no-repeat; background-position: center; flex: 1; border-bottom: 1px solid var(--glass-border);"></div>
+                    <div class="cert-text-preview" style="padding: 1.5rem; text-align: left; background: rgba(0,0,0,0.5);">
+                      <h3 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Google Cybersecurity Professional</h3>
+                      <p style="color: var(--text-secondary);">Google</p>
+                      <p class="cert-coming-soon" style="color: var(--accent); font-size: 0.8rem; margin-top: 0.5rem;"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cert-card-wrapper" style="--i: 3;">
+              <div class="cert-card" data-full-img="Universal/assets/Certificates/ISC2 Certificate Image.png" data-title="ISC2 - Cybersecurity" data-org="ISC2" data-desc="Certified in Cybersecurity (CC) by ISC2. Validates foundational knowledge in security principles, business continuity, disaster recovery, access controls, network security, and security operations." data-pdf="Universal/assets/Certificates/ISC2 Certificate.pdf">
+                <div class="cert-card-inner">
+                  <div class="cert-front">
+                    <div class="cert-image-preview" style="background-image: url('Universal/assets/Certificates/ISC2 Certificate Image.png'); background-size: contain; background-repeat: no-repeat; background-position: center; flex: 1; border-bottom: 1px solid var(--glass-border);"></div>
+                    <div class="cert-text-preview" style="padding: 1.5rem; text-align: left; background: rgba(0,0,0,0.5);">
+                      <h3 style="margin-bottom: 0.5rem; font-size: 1.2rem;">ISC2 - Cybersecurity</h3>
+                      <p style="color: var(--text-secondary);">ISC2</p>
+                      <p class="cert-coming-soon" style="color: var(--accent); font-size: 0.8rem; margin-top: 0.5rem;"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cert-card-wrapper" style="--i: 4;">
+              <div class="cert-card" data-full-img="Universal/assets/Certificates/Google Analytics Image.png" data-title="Google Analytics Certification" data-org="Google" data-desc="Demonstrates proficiency in Google Analytics 4 (GA4). Covers setting up properties, configuring data streams, utilizing audiences, and extracting actionable insights from data analysis and reporting tools." data-pdf="Universal/assets/Certificates/Google Analytics Certification.pdf">
+                <div class="cert-card-inner">
+                  <div class="cert-front">
+                    <div class="cert-image-preview" style="background-image: url('Universal/assets/Certificates/Google Analytics Image.png'); background-size: contain; background-repeat: no-repeat; background-position: center; flex: 1; border-bottom: 1px solid var(--glass-border);"></div>
+                    <div class="cert-text-preview" style="padding: 1.5rem; text-align: left; background: rgba(0,0,0,0.5);">
+                      <h3 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Google Analytics Certification</h3>
+                      <p style="color: var(--text-secondary);">Google</p>
+                      <p class="cert-coming-soon" style="color: var(--accent); font-size: 0.8rem; margin-top: 0.5rem;"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cert-card-wrapper" style="--i: 5;">
+              <div class="cert-card" data-full-img="Universal/assets/Certificates/Career Essential in System Administration Image.png" data-title="Career Essentials in System Administration" data-org="Microsoft / LinkedIn" data-desc="Earned via Microsoft and LinkedIn. Validates foundational system administration skills including server management, Active Directory, network configuration, and cloud computing basics." data-pdf="Universal/assets/Certificates/CertificateOfCompletion_Career Essentials in System Administration by Microsoft and LinkedIn .pdf">
+                <div class="cert-card-inner">
+                  <div class="cert-front">
+                    <div class="cert-image-preview" style="background-image: url('Universal/assets/Certificates/Career Essential in System Administration Image.png'); background-size: contain; background-repeat: no-repeat; background-position: center; flex: 1; border-bottom: 1px solid var(--glass-border);"></div>
+                    <div class="cert-text-preview" style="padding: 1.5rem; text-align: left; background: rgba(0,0,0,0.5);">
+                      <h3 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Career Essentials in System Administration</h3>
+                      <p style="color: var(--text-secondary);">Microsoft / LinkedIn</p>
+                      <p class="cert-coming-soon" style="color: var(--accent); font-size: 0.8rem; margin-top: 0.5rem;"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cert-card-wrapper" style="--i: 6;">
+              <div class="cert-card" data-full-img="" data-title="CompTIA Security+" data-org="CompTIA" data-desc="Currently pursuing. A global certification validating baseline skills required to perform core security functions, including threat analysis, risk mitigation, and cryptographic fundamentals." data-pdf="">
+                <div class="cert-card-inner">
+                  <div class="cert-front">
+                    
+                    <div class="cert-text-preview" style="padding: 1.5rem; text-align: left; background: rgba(0,0,0,0.5);">
+                      <h3 style="margin-bottom: 0.5rem; font-size: 1.2rem;">CompTIA Security+</h3>
+                      <p style="color: var(--text-secondary);">CompTIA</p>
+                      <p class="cert-coming-soon" style="color: var(--accent); font-size: 0.8rem; margin-top: 0.5rem;">(Coming Soon)</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Modal Overlay -->
+  <div id="project-overlay" class="project-overlay">
+    <button class="project-close-btn">&times;</button>
+    <div class="project-modal-content">
+      <div class="project-full-video-container">
+        <!-- Video is injected here -->
+      </div>
+      <div class="project-full-details container glass-panel">
+        <!-- Details are injected here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Certificate FLIP Overlay (Hidden by default) -->
+    <div id="cert-overlay" class="cert-overlay">
+      <button class="cert-close">&times;</button>
+      <div class="cert-overlay-content">
+        <div class="cert-full-image-container">
+           <!-- The clicked cert-card will be FLIPped into here -->
+        </div>
+        <div class="cert-full-details">
+            <h3 id="cert-detail-title">Certificate Title</h3>
+            <p id="cert-detail-org" class="text-gradient" style="display: block; margin-bottom: 1.5rem;">Organization</p>
+            <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 2rem;">
+              <a id="cert-detail-pdf-btn" href="#" target="_blank" class="btn">View Certificate</a>
+            </div>
+            <div class="cert-detail-description">
+            <p id="cert-detail-desc">Overview of the certificate and how it boosts my professional capabilities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="snap-section contact-section">
+      <div class="container text-center reveal">
+        <h2 style="font-size: clamp(2.5rem, 10vw, 10rem); line-height: 1; letter-spacing: -3px; margin-bottom: 2rem;">
+          LET'S <span class="text-gradient">TALK</span>
+        </h2>
+        <p style="margin-bottom: 3rem; color: var(--text-secondary);">Looking to optimize your infrastructure or secure your network? Let's connect.</p>
+        <a href="mailto:angamanabindiza@gmail.com" class="btn" style="font-size: 1.5rem; padding: 1.5rem 4rem;">angamanabindiza@gmail.com</a>
+        
+        <div style="margin-top: 4rem; display: flex; justify-content: center; gap: 3rem; color: var(--text-secondary);">
+          <a href="#" class="social-link">LinkedIn</a>
+          <a href="#" class="social-link">GitHub</a>
+          
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Router/Scripts -->
+  <script src="Universal/assets/js/main.js?v=32"></script>
+</body>
+</html>

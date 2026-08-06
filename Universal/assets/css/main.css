@@ -1,0 +1,635 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg-color: #050505;
+  --text-primary: #f2f2f2;
+  --text-secondary: #888888;
+  --accent-color: #ffffff; /* Switched to a cleaner white for the chrome vibe */
+  --accent-gradient: linear-gradient(135deg, #ffffff, #888888);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  
+  --font-main: 'Outfit', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 3D Canvas */
+#webgl-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none; /* Let clicks pass through */
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--text-secondary);
+}
+
+.text-gradient {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Global Nav */
+.global-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  mix-blend-mode: difference;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex: 1;
+}
+
+.nav-right {
+  justify-content: flex-end;
+}
+
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-name {
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Scroll Container & Snapping */
+.scroll-container {
+  width: 100%;
+  /* Optional: native scroll snap can be clunky with GSAP ScrollTrigger, so we just make them distinct full-height sections instead of forcing CSS snap */
+}
+
+.snap-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 6rem 0;
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.text-center { text-align: center; }
+
+/* Hero Specific */
+.hero-section {
+  justify-content: center;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.scroll-indicator .line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--text-secondary), transparent);
+}
+
+/* Projects Flow */
+.project-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.project-content.alternate {
+  grid-template-columns: 1fr 1fr;
+  direction: rtl;
+}
+.project-content.alternate > * {
+  direction: ltr;
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: 3rem;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+}
+
+.tag {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.preview-box {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-overlay {
+  color: var(--text-secondary);
+  font-family: monospace;
+}
+
+/* Certs 3D Carousel */
+.cert-section {
+  overflow: hidden; /* Hide cards outside the viewport */
+  position: relative;
+}
+
+.cert-viewport {
+  width: 100%;
+  height: 100vh;
+  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  position: relative;
+  z-index: 10;
+  perspective: 1500px;
+}
+
+.cert-track {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0; 
+  height: 0;
+  transform-style: preserve-3d;
+}
+
+.cert-card-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+}
+
+.cert-card {
+  pointer-events: auto; /* Restore clicks for the actual card */
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -135px;
+  margin-left: -240px;
+  width: 480px;
+  height: 270px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.cert-card:hover {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.cert-image-placeholder {
+  width: 100%;
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+/* Certificate Overlay */
+.cert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 5, 5, 0.95);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  backdrop-filter: blur(20px);
+}
+
+.cert-overlay.active {
+  pointer-events: all;
+}
+
+.cert-close {
+  position: absolute;
+  top: 2rem;
+  right: 4rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 3rem;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  line-height: 1;
+  font-weight: 300;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.cert-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.cert-overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+  height: 100%;
+  justify-content: center;
+}
+
+.cert-full-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  perspective: 1500px; /* Matched with cert-viewport for seamless 3D reparenting */
+}
+
+.cert-full-details {
+  text-align: center;
+  max-width: 800px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.cert-full-details h3 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.cert-full-details p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.cert-detail-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* FLIP specific styles */
+.cert-card.is-active {
+  cursor: default;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  background: var(--text-primary);
+  color: var(--bg-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--text-secondary);
+  color: var(--bg-color);
+}
+
+
+/* ==========================================================================
+   Project Modal & Video Integration
+   ========================================================================== */
+
+.project-preview-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none; /* Let the container handle clicks */
+}
+
+.video-overlay-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.5rem;
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.view-project-btn {
+  cursor: pointer;
+}
+
+.view-project-btn:hover .video-overlay-play {
+  opacity: 1;
+}
+
+/* Project Modal Overlay */
+.project-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(5, 5, 5, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 0;
+  pointer-events: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 4rem 2rem;
+}
+
+.project-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.project-close-btn {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 3rem;
+  cursor: pointer;
+  z-index: 10000;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.project-close-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.project-modal-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+}
+
+.project-overlay.active .project-modal-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-full-video-container {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  background: #000;
+  aspect-ratio: 16/9;
+}
+
+.project-full-video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-full-details {
+  padding: 3rem;
+  border-radius: 20px;
+}
+
+.project-full-details h3 {
+  font-size: 1.8rem;
+  margin: 2rem 0 1rem 0;
+  color: #fff;
+}
+
+.project-full-details h3:first-child {
+  margin-top: 0;
+}
+
+.project-full-details p, .project-full-details li {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.project-full-details ul {
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.project-full-details li strong {
+  color: #fff;
+}
+
+/* ==========================================================================
+   Global Text Inversion Effect
+   ========================================================================== */
+
+.invert-target {
+  mix-blend-mode: difference;
+  color: #fff;
+}
+
+.cert-section h2.reveal {
+  mix-blend-mode: difference;
+  color: #fff;
+}
+
+/* Ensure the logo explicitly has the mix-blend-mode */
+#site-logo {
+  mix-blend-mode: difference;
+  color: #fff;
+}
+
+/* Responsive adjustments for cert-cards */
+@media (max-width: 768px) {
+  .cert-card {
+    width: 340px;
+    height: 320px;
+    margin-top: -160px;
+    margin-left: -170px;
+  }
+}
+@media (max-width: 480px) {
+  .cert-card {
+    width: 280px;
+    height: 260px;
+    margin-top: -130px;
+    margin-left: -140px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Navbar */
+  .nav-left, .nav-right {
+    display: none;
+  }
+  .nav-center {
+    margin: 0 auto;
+  }
+  
+  /* Projects Section */
+  .project-content {
+    grid-template-columns: 1fr !important;
+  }
+  .project-video-wrapper {
+    display: none !important;
+  }
+  .project-info-panel {
+    width: 100%;
+  }
+
+  /* Contact Section */
+  .contact-section {
+    min-height: 100dvh;
+    padding-top: 100px; /* Ensure content is pushed down so it doesn't get cut off */
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 1.5rem !important; /* Make logo smaller on mobile so it doesn't overflow */
+    letter-spacing: -1px !important;
+  }
+}
