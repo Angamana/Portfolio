@@ -628,7 +628,7 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-  .logo {
+  .nav-name {
     font-size: 1.5rem !important; /* Make logo smaller on mobile so it doesn't overflow */
     letter-spacing: -1px !important;
   }
@@ -650,9 +650,26 @@ a:hover {
   .about-panel {
     padding: 1.5rem;
   }
-  .logo {
+  .nav-name {
     font-size: 1.1rem !important;
     white-space: nowrap;
     letter-spacing: -0.5px !important;
+  }
+}
+
+.contact-btn {
+  font-size: 1.5rem;
+  padding: 1.5rem 4rem;
+}
+@media (max-width: 768px) {
+  .contact-btn {
+    font-size: 1rem !important;
+    padding: 1rem 1.5rem !important;
+    width: 90%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+    box-sizing: border-box;
+    word-break: break-all;
   }
 }
