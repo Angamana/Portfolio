@@ -744,3 +744,10 @@ a:hover {
     padding: 0 10px !important;
   }
 }
+
+/* Center text inside about-panel on mobile */
+@media (max-width: 768px) {
+  .about-panel {
+    text-align: center !important;
+  }
+}
