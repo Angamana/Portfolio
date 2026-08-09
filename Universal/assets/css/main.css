@@ -697,3 +697,43 @@ a:hover {
     text-align: center !important;
   }
 }
+
+/* Additional Mobile Fixes for layout overflow and centering */
+@media (max-width: 768px) {
+  /* Fix nav centering */
+  .nav-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    justify-content: center !important;
+  }
+  .nav-center {
+    flex: none !important;
+    width: 100% !important;
+    text-align: center;
+  }
+  
+  /* Fix About Modal (System Architect) */
+  .about-panel {
+    margin: 0 10px !important;
+    width: calc(100% - 20px) !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Fix Projects Protrusion and Center Alignment */
+  .project-content, .project-content.alternate {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 10px !important;
+    margin: 0 !important;
+    overflow-x: hidden !important;
+  }
+  
+  /* Fix Credentials Heading */
+  .cert-container h2 {
+    font-size: clamp(2rem, 10vw, 3rem) !important;
+    text-align: center !important;
+    width: 100% !important;
+    word-break: break-word;
+    letter-spacing: -1px;
+  }
+}
