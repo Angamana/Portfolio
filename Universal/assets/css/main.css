@@ -683,3 +683,17 @@ a:hover {
     font-size: 0.9rem !important;
   }
 }
+
+/* Move hero text up on mobile to avoid overlapping the 3D skull */
+@media (max-width: 768px) {
+  .hero-content {
+    transform: translateY(-18vh);
+  }
+}
+
+/* Center align project content on mobile */
+@media (max-width: 768px) {
+  .project-info-panel {
+    text-align: center !important;
+  }
+}
