@@ -673,3 +673,13 @@ a:hover {
     word-break: break-all;
   }
 }
+
+/* Mobile text size reduction */
+@media (max-width: 768px) {
+  p, li, .nav-link {
+    font-size: 0.95rem !important;
+  }
+  .cert-text-preview p, .cert-text-preview h3 {
+    font-size: 0.9rem !important;
+  }
+}
