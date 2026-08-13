@@ -26,6 +26,27 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* iOS Safari fix: overflow-x: hidden on body breaks position:fixed.
+   Adding a containing wrapper via -webkit-transform on the nav forces iOS
+   to correctly treat the nav as viewport-fixed. */
+@supports (-webkit-touch-callout: none) {
+  .global-nav {
+    /* Force a GPU composited layer — iOS Safari respects fixed positioning
+       correctly when the element has its own compositing layer */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    /* Ensure it's truly fixed to the viewport on iOS */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    /* Prevent the scroll container from clipping it */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+}
+
 /* 3D Canvas */
 #webgl-canvas {
   position: fixed;
@@ -80,6 +101,11 @@ a:hover {
   align-items: center;
   z-index: 100;
   mix-blend-mode: difference;
+  /* Promote to own GPU layer — helps iOS Safari respect position:fixed */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .nav-left, .nav-right {
