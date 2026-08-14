@@ -42,19 +42,27 @@ function initThreeJS() {
   if (typeof THREE === 'undefined') return;
 
   const canvas = document.getElementById('webgl-canvas');
-  
+  const isMobile = window.innerWidth <= 768;
+
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x050505, 0.05);
 
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
   camera.position.z = 15;
 
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  // Performance: disable antialias on mobile, use low-power GPU mode
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    alpha: true,
+    antialias: !isMobile,
+    powerPreference: 'low-power'
+  });
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  // Cap pixel ratio: 1 on mobile (huge GPU saving), 1.5 on desktop
+  renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 1.5));
 
-  // High quality reflections setup
-  if (typeof THREE.RoomEnvironment !== 'undefined') {
+  // High quality reflections — skip on mobile to save GPU/memory
+  if (!isMobile && typeof THREE.RoomEnvironment !== 'undefined') {
     const pmremGenerator = new THREE.PMREMGenerator(renderer);
     scene.environment = pmremGenerator.fromScene(new THREE.RoomEnvironment(), 0.04).texture;
   }
@@ -125,9 +133,18 @@ function initThreeJS() {
 
   // Animation Loop
   const clock = new THREE.Clock();
+  // Cap to 30fps on mobile to halve GPU load; 60fps on desktop
+  const targetFPS = isMobile ? 30 : 60;
+  const frameInterval = 1000 / targetFPS;
+  let lastFrameTime = 0;
   
-  function animate() {
+  function animate(timestamp) {
     requestAnimationFrame(animate);
+
+    // Skip frame if not enough time has elapsed (throttle to targetFPS)
+    if (timestamp - lastFrameTime < frameInterval) return;
+    lastFrameTime = timestamp;
+
     const elapsedTime = clock.getElapsedTime();
 
     scene.position.y = Math.sin(elapsedTime * 0.5) * 0.2;
@@ -148,7 +165,7 @@ function initThreeJS() {
     renderer.render(scene, camera);
   }
   
-  animate();
+  animate(0);
 
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
