@@ -493,3 +493,8 @@ document.addEventListener('DOMContentLoaded', () => {
     fullDetailsContainer.innerHTML = '';
   });
 });
+
+// Disable right-click globally
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
