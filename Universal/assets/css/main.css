@@ -777,3 +777,14 @@ a:hover {
     text-align: center !important;
   }
 }
+
+/* Move scroll indicator under paragraph on mobile */
+@media (max-width: 768px) {
+  .scroll-indicator {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin-top: 2.5rem !important;
+  }
+}
