@@ -61,10 +61,11 @@ function initThreeJS() {
   // Cap pixel ratio: 1 on mobile (huge GPU saving), 1.5 on desktop
   renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 1.5));
 
-  // High quality reflections — skip on mobile to save GPU/memory
-  if (!isMobile && typeof THREE.RoomEnvironment !== 'undefined') {
+  // Environment map for chrome reflections (PMREM generated once at init)
+  if (typeof THREE.RoomEnvironment !== 'undefined') {
     const pmremGenerator = new THREE.PMREMGenerator(renderer);
     scene.environment = pmremGenerator.fromScene(new THREE.RoomEnvironment(), 0.04).texture;
+    pmremGenerator.dispose();
   }
 
   // Fallback Lighting
